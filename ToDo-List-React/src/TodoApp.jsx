@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import ToDoForm from "./components/organisms/ToDoForm";
+import { useState } from "react";
 
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
@@ -11,13 +10,23 @@ const TodoApp = () => {
       createdAt: new Date(),
     };
     // Aggiunge il nuovo task all'array esistente
-    setTodos((prevTodos) => [...prevTodos, newTodo]);
+    setTodos([...todos, newTodo]);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (inputValue) {
+      addTodo(inputValue);
+    }
   };
 
   return (
     <div>
       <h1>La mia Todo List</h1>
-      <TodoForm onAddTodo={addTodo} />
+      <form onSubmit={handleSubmit}>
+        <input type="text" value={inputValue} placeholder="Inserisci ToDo" />
+        <button type="submit">Aggiungi</button>
+      </form>
     </div>
   );
 };
