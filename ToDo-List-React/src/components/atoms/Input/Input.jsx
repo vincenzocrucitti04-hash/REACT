@@ -1,19 +1,10 @@
-const Input = ({
-  value,
-  onChange,
-  placeholder = "",
-  type = "text",
-  disabled = false,
-  ...props
-}) => {
+const Input = ({ value, onChange, placeholder }) => {
   return (
     <input
-      type={type}
+      type="text"
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      disabled={disabled}
-      {...props}
     />
   );
 };
